@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class CustomUser(AbstractUser):
-    name = models.CharField(max_length=250, defalut='Anonymous')
+    name = models.CharField(max_length=250, default='Anonymous')
     email = models.EmailField(max_length=240, unique=True)
 
     username = None
@@ -20,3 +20,6 @@ class CustomUser(AbstractUser):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
